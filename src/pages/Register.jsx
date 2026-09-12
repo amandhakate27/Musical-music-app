@@ -22,12 +22,10 @@ const Register = () => {
     const selectedRole = watch("role");
 
     const handleRegister = (data) => {
-        const result = registerUser(data);
-        if (!result.ok) {
-            alert(result.message);
-            return;
-        }
-        alert("Registration successful!");
+        console.log("Form data:", data);
+        const success = registerUser(data);
+        if (!success) return;
+        console.log("Navigating to login");
         navigate("/", { replace: true });
         reset();
     };
