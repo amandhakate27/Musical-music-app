@@ -22,12 +22,13 @@ const Register = () => {
     const selectedRole = watch("role");
 
     const handleRegister = (data) => {
-        console.log("Form data:", data);
         const success = registerUser(data);
-        if (!success) return;
-        console.log("Navigating to login");
-        navigate("/", { replace: true });
+        if (!success) {
+            reset();
+            return;
+        }
         reset();
+        navigate("/", { replace: true });
     };
 
     const inputClass =

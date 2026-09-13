@@ -9,11 +9,10 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  
   const handleLogin = (data) => {
-    console.log("Form data:", data);
     const user = login(data.email, data.password);
     if (!user) return;
-    console.log("Navigating based on role:", user.role);
     if (user.role === "artist") {
       navigate("/main/artist-dashboard", { replace: true });
     } else {

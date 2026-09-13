@@ -31,28 +31,24 @@ export const AuthProvider = ({ children }) => {
     }, [loggedInUser]);
 
     const registerUser = (data) => {
-        console.log("Register attempt:", data);
         const exists = registeredUser.find((u) => u.email === data.email || u.username === data.username);
         if (exists) {
-            console.log("Register failed - already exists:", exists);
             alert("User with this email or username already exists!");
             return false;
         }
-        console.log("Register success:", data);
+        // console.log("Registered:", data);
         setRegisteredUser((prev) => [...prev, data]);
         alert("Registration successful!");
         return true;
     };
 
     const login = (email, password) => {
-        console.log("Login attempt:", email);
         const user = registeredUser.find((u) => u.email === email && u.password === password);
         if (!user) {
-            console.log("Login failed for:", email);
             alert("User Not Found! Invalid Credentials");
             return null;
         }
-        console.log("Login success:", user);
+        // console.log("Logged in:", user);
         setLoggedInUser(user);
         alert("Login Successful !");
         return user;
